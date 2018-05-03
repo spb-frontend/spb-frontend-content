@@ -13,6 +13,7 @@
     "start": "node ./index.js",
     "deploy": "rm -rf public && yarn start && gh-pages -d public -m Updates [ci skip]",
     "deploy:ci": "rm -rf public && yarn start && node ghpages.js",
+    "lint": "eslint .",
     "precommit": "lint-staged"
   },
   "lint-staged": {
