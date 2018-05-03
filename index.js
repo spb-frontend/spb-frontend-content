@@ -35,10 +35,14 @@ function process(content) {
   })
 
   processedKeys.forEach(key => {
-    fs.writeFile(
-      path.resolve(publicPath, `${key}.json`),
-      JSON.stringify(processed[key]),
-      {encoding: 'utf8'},
-    )
+    mkpath(publicPath, err => {
+      if (err) throw err
+
+      fs.writeFile(
+        path.resolve(publicPath, `${key}.json`),
+        JSON.stringify(processed[key]),
+        {encoding: 'utf8'},
+      )
+    })
   })
 }
