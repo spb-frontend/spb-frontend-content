@@ -1,0 +1,42 @@
+{
+  "name": "spb-frontend-content",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/spb-frontend/spb-frontend-content",
+  "author": "Alex Kurganov",
+  "license": "MIT",
+  "engines": {
+    "node": "^8.11.1",
+    "yarn": "^1.6.0"
+  },
+  "scripts": {
+    "start": "node ./index.js",
+    "deploy": "rm -rf public && yarn start && gh-pages -d public -m Updates [ci skip]",
+    "deploy:ci": "rm -rf public && yarn start && node ghpages.js",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js}": [
+      "eslint"
+    ]
+  },
+  "jest": {
+    "verbose": true,
+    "testRegex": ".(test|spec).js$",
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-import": "^2.11.0",
+    "gh-pages": "^1.1.0",
+    "husky": "^0.14.3",
+    "jest": "^22.4.3",
+    "lint-staged": "^7.0.5"
+  },
+  "dependencies": {
+    "contentful": "^6.1.0",
+    "mkpath": "^1.0.0"
+  }
+}
